@@ -16,6 +16,7 @@ func InputFileChan(filepath string) (<-chan string, error) {
 	resultChan := make(chan string)
 
 	go func() {
+		defer file.Close()
 		defer close(resultChan)
 
 		for scanner.Scan() {
