@@ -1,26 +1,24 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"os"
 	"strings"
+
+	"github.com/mycreepy/aoc2022/common"
 )
 
 func main() {
-	file, err := os.Open("day3/input.txt")
+	lines, err := common.InputFileChan("day1/input.txt")
 	if err != nil {
 		panic(err)
 	}
 
-	scanner := bufio.NewScanner(file)
-
 	var sum int
 
-	for scanner.Scan() {
-		l := len(scanner.Text())
-		first := scanner.Text()[:l/2]
-		second := scanner.Text()[l/2:]
+	for line := range lines {
+		l := len(line)
+		first := line[:l/2]
+		second := line[l/2:]
 
 		for _, c := range first {
 			if strings.Contains(second, string(c)) {

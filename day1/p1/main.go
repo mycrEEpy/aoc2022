@@ -1,24 +1,22 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"os"
 	"strconv"
+
+	"github.com/mycreepy/aoc2022/common"
 )
 
 func main() {
-	file, err := os.Open("day1/input.txt")
+	lines, err := common.InputFileChan("day1/input.txt")
 	if err != nil {
 		panic(err)
 	}
 
-	scanner := bufio.NewScanner(file)
-
 	var current, max int
 
-	for scanner.Scan() {
-		if scanner.Text() == "" {
+	for line := range lines {
+		if line == "" {
 			if current > max {
 				max = current
 			}
@@ -28,7 +26,7 @@ func main() {
 			continue
 		}
 
-		val, err := strconv.Atoi(scanner.Text())
+		val, err := strconv.Atoi(line)
 		if err != nil {
 			panic(err)
 		}

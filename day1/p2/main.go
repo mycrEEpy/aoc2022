@@ -1,11 +1,11 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"os"
 	"sort"
 	"strconv"
+
+	"github.com/mycreepy/aoc2022/common"
 )
 
 type IntHeap []int
@@ -31,19 +31,17 @@ func (h *IntHeap) Pop() int {
 }
 
 func main() {
-	file, err := os.Open("day1/input.txt")
+	lines, err := common.InputFileChan("day1/input.txt")
 	if err != nil {
 		panic(err)
 	}
-
-	scanner := bufio.NewScanner(file)
 
 	bestElfs := make(IntHeap, 0)
 
 	var current int
 
-	for scanner.Scan() {
-		if scanner.Text() == "" {
+	for line := range lines {
+		if line == "" {
 			bestElfs.Push(current)
 			current = 0
 
@@ -54,7 +52,7 @@ func main() {
 			continue
 		}
 
-		val, err := strconv.Atoi(scanner.Text())
+		val, err := strconv.Atoi(line)
 		if err != nil {
 			panic(err)
 		}

@@ -1,25 +1,23 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"os"
 	"strings"
+
+	"github.com/mycreepy/aoc2022/common"
 )
 
 func main() {
-	file, err := os.Open("day3/input.txt")
+	lines, err := common.InputFileChan("day1/input.txt")
 	if err != nil {
 		panic(err)
 	}
 
-	scanner := bufio.NewScanner(file)
-
 	var sum int
 	group := make([]string, 0, 3)
 
-	for scanner.Scan() {
-		group = append(group, scanner.Text())
+	for line := range lines {
+		group = append(group, line)
 
 		if len(group) < 3 {
 			continue

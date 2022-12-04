@@ -1,25 +1,23 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"os"
 	"strconv"
 	"strings"
+
+	"github.com/mycreepy/aoc2022/common"
 )
 
 func main() {
-	file, err := os.Open("day4/input.txt")
+	lines, err := common.InputFileChan("day1/input.txt")
 	if err != nil {
 		panic(err)
 	}
 
-	scanner := bufio.NewScanner(file)
-
 	var sum int
 
-	for scanner.Scan() {
-		pairs := strings.Split(scanner.Text(), ",")
+	for line := range lines {
+		pairs := strings.Split(line, ",")
 
 		contained, err := isContained(pairs[0], pairs[1])
 		if err != nil {

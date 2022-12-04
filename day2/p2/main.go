@@ -1,10 +1,10 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"os"
 	"strings"
+
+	"github.com/mycreepy/aoc2022/common"
 )
 
 const (
@@ -17,17 +17,15 @@ const (
 )
 
 func main() {
-	file, err := os.Open("day2/input.txt")
+	lines, err := common.InputFileChan("day1/input.txt")
 	if err != nil {
 		panic(err)
 	}
 
-	scanner := bufio.NewScanner(file)
-
 	var score int
 
-	for scanner.Scan() {
-		split := strings.Split(scanner.Text(), " ")
+	for line := range lines {
+		split := strings.Split(line, " ")
 		enemy := split[0]
 		me := split[1]
 
