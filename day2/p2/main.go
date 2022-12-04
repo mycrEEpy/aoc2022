@@ -17,7 +17,7 @@ const (
 )
 
 func main() {
-	lines, err := common.InputFileChan("day1/input.txt")
+	lines, err := common.InputFileChan("day2/input.txt")
 	if err != nil {
 		panic(err)
 	}

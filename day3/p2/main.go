@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	lines, err := common.InputFileChan("day1/input.txt")
+	lines, err := common.InputFileChan("day3/input.txt")
 	if err != nil {
 		panic(err)
 	}
